@@ -13,11 +13,25 @@
         // JavaScript backup fallback to ensure the redirect triggers
         window.location.href = "https://YOUR-DESTINATION-URL.com";
     </script>
+    <!-- Added: Simple styling to make the mandatory button highly visible -->
+    <style>
+        .tab-btn {
+            display: inline-block;
+            padding: 15px 25px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-family: sans-serif;
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
-    <!-- Added: Guaranteed fallback link that forces a new tab when clicked -->
-    <p><a href="https://YOUR-DESTINATION-URL.com" target="_blank" rel="noopener noreferrer">Click here to open in a new tab safely.</a></p>
-    
+    <!-- Added: The mandatory clickable button that browsers require to allow a new tab -->
+    <p><a href="https://YOUR-DESTINATION-URL.com" target="_blank" rel="noopener noreferrer" class="tab-btn">Click Here to Open in New Tab</a></p>
+
     <p>If you are not redirected automatically, follow this <a href="google.com">link to the destination</a>.</p>
 </body>
 </html>
