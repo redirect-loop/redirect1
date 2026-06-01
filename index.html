@@ -1,37 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <title>Redirecting...</title>
-    <!-- This tag tells the browser to redirect immediately (0 seconds) to the destination URL -->
-    <meta http-equiv="refresh" content="0; url=https://YOUR-DESTINATION-URL.com">
-    <link rel="canonical" href="https://YOUR-DESTINATION-URL.com">
-    <script type="text/javascript">
-        // Added: Attempt to open a new tab automatically (Note: Browser popup blockers will likely stop this)
-        window.open("https://YOUR-DESTINATION-URL.com", "_blank");
-        
-        // JavaScript backup fallback to ensure the redirect triggers
-        window.location.href = "https://YOUR-DESTINATION-URL.com";
-    </script>
-    <!-- Added: Simple styling to make the mandatory button highly visible -->
     <style>
-        .tab-btn {
-            display: inline-block;
-            padding: 15px 25px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
+        body {
             font-family: sans-serif;
-            margin: 20px 0;
+            text-align: center;
+            padding-top: 50px;
+        }
+        a {
+            color: #0366d6;
+            text-decoration: none;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <!-- Added: The mandatory clickable button that browsers require to allow a new tab -->
-    <p><a href="https://YOUR-DESTINATION-URL.com" target="_blank" rel="noopener noreferrer" class="tab-btn">Click Here to Open in New Tab</a></p>
 
-    <p>If you are not redirected automatically, follow this <a href="google.com">link to the destination</a>.</p>
+    <p>Redirecting you to the new site in a new tab...</p>
+    <!-- Fallback link in case the browser blocks the automatic pop-up -->
+    <p>If the page does not open automatically, <a id="redirect-link" href="https://example.com" target="_blank" rel="noopener noreferrer">click here</a>.</p>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const destination = "https://example.com";
+            
+            // Attempt to open the target website in a new tab
+            const newTab = window.open(destination, '_blank');
+            
+            // If the browser blocks the pop-up, focus the fallback link for the user
+            if (!newTab || newTab.closed || typeof newTab.closed === 'undefined') {
+                document.getElementById('redirect-link').focus();
+            }
+        });
+    </script>
+
 </body>
 </html>
